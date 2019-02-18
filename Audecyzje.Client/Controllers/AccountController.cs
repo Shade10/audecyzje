@@ -104,6 +104,21 @@ namespace Audecyzje.Client
             return View(model);
         }
 
+        [HttpPost("changePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ManageViewModel model)
+        {
+            var userEmail = await _userManager.FindByEmailAsync(model.Email);
+            var userPassword = userEmail.PasswordHash;
+            var result = await _userManager.ChangePasswordAsync(userEmail, userPassword, model.Password);
+            if (result.Succeeded)
+            {
+                _logger.LogInformation(message: "user password change completed correctly");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+            return View(model);
+        }
+
         [HttpPost("logoff")]
         public async Task<IActionResult> LogOff()
         {
