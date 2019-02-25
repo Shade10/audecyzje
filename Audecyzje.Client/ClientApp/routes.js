@@ -10,6 +10,7 @@ import AddPost from 'components/admin/posts/add'
 import EditPost from 'components/admin/posts/edit'
 import Login from 'components/login'
 import Register from 'components/register'
+import ChangePassword from 'components/changePassword'
 
 function httpGetAsync(theUrl, callback) {
     var xmlHttp = new XMLHttpRequest();
@@ -42,6 +43,7 @@ export const routes = [
     { path: '/mapa', name: 'map', component: Map, display: 'Mapa reprywatyzacji', style: 'glyphicon glyphicon-th-list', props: { query: false } },
     { path: '/kontakt', component: Contact, display: 'Kontakt', style: 'glyphicon glyphicon-th-list' },
     { path: '/admin/', component: AdminIndex, display: 'Admin', style: 'glyphicon glyphicon-th-list', beforeEnter: requireAuth },
+    { path: '/changePassword/', component: ChangePassword, display: 'Zmiana Hasła', style: 'glyphicon glyphicon-th-list', beforeEnter: requireAuth },
     { path: '/admin/login', component: Login, display: 'Login', style: 'glyphicon glyphicon-th-list' },
     { path: '/admin/register', component: Register, display: 'Register', style: 'glyphicon glyphicon-th-list' },
     { path: '/admin/posts/add', component: AddPost, display: 'Dodaj post', style: 'glyphicon glyphicon-th-list', beforeEnter: requireAuth },
